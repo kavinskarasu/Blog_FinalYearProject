@@ -130,7 +130,7 @@ module.exports.submitComment = (req, res) => {
 };
 
 module.exports.getTopicPosts = async (req, res) => {
-  const categoryModel = await Category.findOne({ title: "Technology" });
+  const categoryModel = await Category.findOne(req.query);
   const { _id: id } = categoryModel;
   const posts = await Post.find({ category: id }).lean();
   console.log(posts);
